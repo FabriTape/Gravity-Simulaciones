@@ -1,0 +1,27 @@
+# Temporal files
+*.asv
+*.m~
+*.mex*
+*.mlappinstall
+*.mltbx
+
+# Generated files
+*.png
+*.jpg
+*.gif
+*.avi
+*.mp4
+*.fig
+*.mat
+
+# OS files
+.DS_Store
+Thumbs.db
+*~
+
+# Octave session info
+octave-workspace
+
+# Binary simulation outputs
+*.bin
+gravity/
