@@ -19,12 +19,11 @@ Primera versión de la simulación de 2 cuerpos gravitacionales.
 | Tiempo final | 700 |
 
 ## Archivos
-- `RK1_V1.m` - Script principal (autocontenido)
+- `euler_forward.m` - Script principal (autocontenido)
 
 ## Cómo ejecutar
-```octave
-cd 2_Cuerpos/v0.1_euler
-RK1_V1
+```bash
+octave euler_forward
 ```
 
 ## Notas

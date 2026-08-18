@@ -1,5 +1,5 @@
 clear all; clc;
-% Wrapper para VerletV3 con condiciones iniciales del sistema solar
+% Wrapper para verlet_timestep_variable con condiciones iniciales del sistema solar
 % Sistema solar: 11 cuerpos (Sol + planetas + Luna + Plutón)
 
 % Condiciones iniciales del sistema solar (usando InitialRot-like data)
@@ -40,11 +40,11 @@ C = ones(1,length(T)-1);  % C(n) = 1 para timestep uniforme
 
 % Ejecutar VerletV3
 tic;
-X = VerletV3(X0, V0, M, C, T);
+X = verlet_timestep_variable(X0, V0, M, C, T);
 toc;
 
 % Gráfico de trayectorias
 plot3(X(:,:,1),X(:,:,2),X(:,:,3),'o');
 xlabel("x [m]"); ylabel("y [m]"); zlabel("z [m]");
-title("Sistema Solar - VerletV3 (Timestep Uniforme)");
+title("Sistema Solar - verlet_timestep_variable (Timestep Uniforme)");
 legend({"Sol","Mercurio","Venus","Tierra","Luna","Marte","Jupiter","Saturno","Urano","Neptuno","Plutón"});

@@ -18,24 +18,23 @@ Primera implementación del integrador Verlet para el sistema Tierra-Luna.
 | Tiempo total | 23328000 s (~270 días) |
 
 ## Versiones incluidas
-- **Verlet Sin Vel**: Forma clásica position-only: x_{n+1} = 2x_n - x_{n-1} + a·dt². Reconstruye la posición inicial t=-dt a partir de la velocidad.
-- **Verlet Con Vel**: Almacena velocidades explícitamente con la fórmula: v_{n+1} = v_n + (a_n + a_{n+1})·dt/2. Incluye seguimiento de energía y momento.
+- **verlet_posicion.m**: Forma clásica position-only: x_{n+1} = 2x_n - x_{n-1} + a·dt². Reconstruye la posición inicial t=-dt a partir de la velocidad.
+- **verlet_velocidad.m**: Almacena velocidades explícitamente con la fórmula: v_{n+1} = v_n + (a_n + a_{n+1})·dt/2. Incluye seguimiento de energía y momento.
 
 ## Archivos
-- `Verlet_SinVel.m` - Verlet position-only (script autocontenido)
-- `Verlet_ConVel.m` - Verlet con velocidad explícita
-- `CondIn.m` - Condiciones iniciales
-- `FAnonimas.m` - Funciones de fuerza y cantidades conservadas
-- `TrayParticulas.m` - Gráfico de trayectorias 3D
-- `Graficas.m` - Gráficas de energía y momento
+- `verlet_posicion.m` - Verlet position-only (script autocontenido)
+- `verlet_velocidad.m` - Verlet con velocidad explícita
+- `condiciones_iniciales.m` - Condiciones iniciales
+- `funciones_fisica.m` - Funciones de fuerza y cantidades conservadas
+- `grafico_trayectorias.m` - Gráfico de trayectorias 3D
+- `graficos_energia.m` - Gráficas de energía y momento
 
 ## Cómo ejecutar
-```octave
-cd 2_Cuerpos/v0.3_verlet
-Verlet_SinVel   # Position-only Verlet
-Verlet_ConVel   # Velocity Verlet con seguimiento de energía
+```bash
+octave verlet_posicion    # Position-only Verlet
+octave verlet_velocidad   # Velocity Verlet con seguimiento de energía
 ```
 
 ## Notas
-- La diferencia principal entre SinVel y ConVel es cómo se manejan las velocidades.
-- ConVel incluye cálculo de energía cinética, potencial y momento para verificar conservación.
+- La diferencia principal entre verlet_posicion y verlet_velocidad es cómo se manejan las velocidades.
+- verlet_velocidad incluye cálculo de energía cinética, potencial y momento para verificar conservación.

@@ -1,5 +1,5 @@
 clear all; clc;
-% Wrapper para VerletV4/V5/V6 con condiciones iniciales del sistema solar
+% Wrapper para verlet_vectorizado_g2n/g3n/embebido con condiciones iniciales del sistema solar
 % Compara las 3 versiones de integrador vectorizado
 
 % Condiciones iniciales del sistema solar
@@ -24,37 +24,37 @@ dt = 86400;
 T = 0:dt:300*dt;
 C = ones(1,length(T)-1);
 
-% --- VerletV4 (usa G2N) ---
-fprintf('Ejecutando VerletV4...\n');
+% --- verlet_vectorizado_g2n (usa fuerza_g2n) ---
+fprintf('Ejecutando verlet_vectorizado_g2n...\n');
 tic;
-X4 = VerletV4(X0, V0, M, C, T);
+X4 = verlet_vectorizado_g2n(X0, V0, M, C, T);
 t4 = toc;
-fprintf('VerletV4: %.3f segundos\n', t4);
+fprintf('verlet_vectorizado_g2n: %.3f segundos\n', t4);
 
-% --- VerletV5 (usa G3N, fórmula de timestep mejorada) ---
-fprintf('Ejecutando VerletV5...\n');
+% --- verlet_vectorizado_g3n (usa fuerza_g3n, fórmula de timestep mejorada) ---
+fprintf('Ejecutando verlet_vectorizado_g3n...\n');
 tic;
-X5 = VerletV5(X0, V0, M, C, T);
+X5 = verlet_vectorizado_g3n(X0, V0, M, C, T);
 t5 = toc;
-fprintf('VerletV5: %.3f segundos\n', t5);
+fprintf('verlet_vectorizado_g3n: %.3f segundos\n', t5);
 
-% --- VerletV6 (usa G4N embebida) ---
-fprintf('Ejecutando VerletV6...\n');
+% --- verlet_vectorizado_embebido (usa G4N embebida) ---
+fprintf('Ejecutando verlet_vectorizado_embebido...\n');
 tic;
-X6 = VerletV6(X0, V0, M, C, T);
+X6 = verlet_vectorizado_embebido(X0, V0, M, C, T);
 t6 = toc;
-fprintf('VerletV6: %.3f segundos\n', t6);
+fprintf('verlet_vectorizado_embebido: %.3f segundos\n', t6);
 
 % Gráfico comparativo
 figure;
 subplot(1,3,1);
 plot3(X4(:,:,1),X4(:,:,2),X4(:,:,3),'o');
-title('VerletV4 (G2N)'); xlabel('x'); ylabel('y'); zlabel('z');
+title('verlet_vectorizado_g2n (fuerza_g2n)'); xlabel('x'); ylabel('y'); zlabel('z');
 
 subplot(1,3,2);
 plot3(X5(:,:,1),X5(:,:,2),X5(:,:,3),'o');
-title('VerletV5 (G3N)'); xlabel('x'); ylabel('y'); zlabel('z');
+title('verlet_vectorizado_g3n (fuerza_g3n)'); xlabel('x'); ylabel('y'); zlabel('z');
 
 subplot(1,3,3);
 plot3(X6(:,:,1),X6(:,:,2),X6(:,:,3),'o');
-title('VerletV6 (G4N embebida)'); xlabel('x'); ylabel('y'); zlabel('z');
+title('verlet_vectorizado_embebido (G4N embebida)'); xlabel('x'); ylabel('y'); zlabel('z');

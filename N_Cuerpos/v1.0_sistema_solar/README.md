@@ -30,16 +30,16 @@ Las posiciones y velocidades se transforman según ángulos de perihelio (θ) y 
 | Softening | +1 en denominador (previene singularidades) |
 
 ## Archivos
-- `VerletV1.m` - Script principal de integración
-- `InitialRot.m` - Condiciones iniciales con transformación de coordenadas polares a Cartesianas
-- `G.m` - Función de aceleración gravitatoria N-cuerpos (con softening)
-- `Noether.m` - Verificación de conservación de energía y momento
-- `Graficador.m` - Gráficas de energía, momento y trayectorias orbitales 3D
+- `verlet_sistema_solar.m` - Script principal de integración
+- `condiciones_iniciales_solar.m` - Condiciones iniciales con transformación de coordenadas polares a Cartesianas
+- `aceleracion_gravitatoria.m` - Función de aceleración gravitatoria N-cuerpos (con softening)
+- `conservacion.m` - Verificación de conservación de energía y momento
+- `graficador_orbitas.m` - Gráficas de energía, momento y trayectorias orbitales 3D
 
 ## Cómo ejecutar
 ```octave
 cd N_Cuerpos/v1.0_sistema_solar
-VerletV1
+verlet_sistema_solar
 ```
 
 ## Notas

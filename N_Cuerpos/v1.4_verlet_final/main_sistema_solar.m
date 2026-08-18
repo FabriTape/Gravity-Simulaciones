@@ -1,5 +1,5 @@
 clear all; clc;
-% Wrapper para VerletV7 con condiciones iniciales del sistema solar
+% Wrapper para verlet_final con condiciones iniciales del sistema solar
 % Versión final y más compacta del integrador Verlet
 
 % Condiciones iniciales del sistema solar
@@ -25,14 +25,14 @@ dt = 86400;       % Paso: 1 día
 N_pasos = 300;    % 300 días
 Iter = N_pasos + 1;
 
-% Ejecutar VerletV7
-fprintf('Ejecutando VerletV7 (versión final)...\n');
-X = VerletV7(X0, V0, M, dt, Iter);
+% Ejecutar verlet_final
+fprintf('Ejecutando verlet_final (versión final)...\n');
+X = verlet_final(X0, V0, M, dt, Iter);
 
 % Gráfico de trayectorias
 figure;
 plot3(X(:,:,1),X(:,:,2),X(:,:,3),'o','MarkerSize',3);
 xlabel("x [m]"); ylabel("y [m]"); zlabel("z [m]");
-title("Sistema Solar - VerletV7 (Versión Final)");
+title("Sistema Solar - verlet_final (Versión Final)");
 legend({"Sol","Mercurio","Venus","Tierra","Luna","Marte","Jupiter","Saturno","Urano","Neptuno","Plutón"},'Location','best');
 grid on;

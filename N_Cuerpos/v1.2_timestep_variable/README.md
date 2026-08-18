@@ -17,12 +17,12 @@ El wrapper `main_sistema_solar.m` incluye ICs del sistema solar (11 cuerpos) con
 | C(n) | 1 (uniforme por defecto) |
 
 ## Archivos
-- `VerletV3.m` - Función integradora (acepta X, V, M, C, T como argumentos)
+- `verlet_timestep_variable.m` - Función integradora (acepta X, V, M, C, T como argumentos)
 - `main_sistema_solar.m` - **Wrapper** con condiciones iniciales del sistema solar
-- `G2.m` - Función de fuerza con matrix anti-simétrica
-- `DNI.m` - Generador de condiciones iniciales aleatorias
-- `EmyNoether.m` - Energía y momento (Hamiltoniano)
-- `ErrorAnalysis.m` - Análisis de error de energía y momento (normalización arctan)
+- `aceleracion_antisimetrica.m` - Función de fuerza con matrix anti-simétrica
+- `datos_iniciales_aleatorios.m` - Generador de condiciones iniciales aleatorias
+- `energia_momento.m` - Energía y momento (Hamiltoniano)
+- `analisis_error.m` - Análisis de error de energía y momento (normalización arctan)
 
 ## Cómo ejecutar
 ```octave
@@ -32,5 +32,5 @@ main_sistema_solar   % Ejecuta con sistema solar
 
 ## Notas
 - Para usar timestep variable, modificar el vector C en el wrapper. Si C(n) > 1, el paso se agranda; si C(n) < 1, se achica.
-- La función VerletV3 es genérica y acepta cualquier sistema de N cuerpos.
-- ErrorAnalysis usa la transformación 2·atan(E/E0) - π/2 para mapear el error relativo a [0,1].
+- La función verlet_timestep_variable es genérica y acepta cualquier sistema de N cuerpos.
+- analisis_error usa la transformación 2·atan(E/E0) - π/2 para mapear el error relativo a [0,1].

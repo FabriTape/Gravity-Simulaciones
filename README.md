@@ -26,21 +26,21 @@ El proyecto evolucionó desde simulaciones simples de 2 cuerpos hasta implementa
 
 ```
 Gravity/
-├── 2_Cuerpos/          # Simulaciones de 2 cuerpos
-│   ├── v0.1_euler/
-│   ├── v0.2_euler_mejorado/
-│   └── v0.3_verlet/
-├── N_Cuerpos/          # Simulaciones de N cuerpos
-│   ├── v1.0_sistema_solar/
-│   ├── v1.1_n_aleatorio/
-│   ├── v1.2_timestep_variable/
-│   ├── v1.3_vectorizacion/
-│   └── v1.4_verlet_final/
-├── De_zero/            # Reimplementaciones y experimentos
-│   ├── v2.0_verlet_nd_array/
-│   ├── v2.1_outer_wilds/
-│   └── v2.2_ia_optimizaciones/
-└── densityScatter.m    # Utilidad de terceros
+├── 2_Cuerpos/
+│   ├── v0.1_euler/            → octave euler_forward
+│   ├── v0.2_euler_mejorado/   → octave euler_mejorado / octave euler_mejorado_choques
+│   └── v0.3_verlet/           → octave verlet_posicion / octave verlet_velocidad
+├── N_Cuerpos/
+│   ├── v1.0_sistema_solar/    → octave verlet_sistema_solar
+│   ├── v1.1_n_aleatorio/      → octave verlet_n_aleatorio
+│   ├── v1.2_timestep_variable/→ octave main_sistema_solar
+│   ├── v1.3_vectorizacion/    → octave main_sistema_solar
+│   └── v1.4_verlet_final/     → octave main_sistema_solar
+├── De_zero/
+│   ├── v2.0_verlet_nd_array/  → octave verlet_unidades_adimensionales / octave verlet_500_cuerpos
+│   ├── v2.1_outer_wilds/      → octave outer_wilds_3d / octave richardson_extrapolation
+│   └── v2.2_ia_optimizaciones/→ octave verlet_chatgpt_hibrido / octave barnes_hut_fft
+└── densityScatter.m           # Utilidad de terceros
 ```
 
 ## Requisitos
@@ -50,23 +50,46 @@ Gravity/
 
 ## Cómo ejecutar
 
-Cada release contiene su propio `README.md` con instrucciones específicas. En general:
+Cada release tiene su propio `README.md` con instrucciones. Formato general:
 
-```octave
+```bash
 cd 2_Cuerpos/v0.3_verlet
-Verlet_ConVel   # Ejecuta la simulación Tierra-Luna
+octave verlet_velocidad
 ```
 
-Para los releases de N-Cuerpos con funciones (v1.2-v1.4), usar los wrappers:
+Para los releases v1.2-v1.4, los archivos principales son funciones que necesitan un wrapper:
 
-```octave
+```bash
 cd N_Cuerpos/v1.4_verlet_final
-main_sistema_solar   # Ejecuta con sistema solar completo
+octave main_sistema_solar
 ```
+
+## Convención de nombres
+
+Todos los archivos `.m` usan snake_case con nombres descriptivos:
+
+| Prefijo | Tipo | Ejemplo |
+|---------|------|---------|
+| `verlet_*` | Integradores Verlet | `verlet_final.m`, `verlet_vectorizado_g2n.m` |
+| `euler_*` | Integradores Euler | `euler_forward.m`, `euler_mejorado.m` |
+| `fuerza_*` | Funciones de fuerza | `fuerza_g2n.m`, `fuerza_g3n.m` |
+| `aceleracion_*` | Aceleración gravitatoria | `aceleracion_gravitatoria.m`, `aceleracion_antisimetrica.m` |
+| `condiciones_iniciales*` | Condiciones iniciales | `condiciones_iniciales_solar.m` |
+| `datos_iniciales_*` | Generador de ICs aleatorias | `datos_iniciales_aleatorios.m` |
+| `energia_momento*` | Cantidades conservadas | `energia_momento.m`, `energia_momento_filtrada.m` |
+| `analisis_error*` | Análisis de error | `analisis_error.m` |
+| `grafico_*` / `graficador_*` | Gráficos | `grafico_trayectorias.m`, `graficador_orbitas.m` |
+| `ploter_*` | Ploters de densidad | `ploter_densidad.m` |
+| `benchmark_*` | Tests de rendimiento | `benchmark_broadcasting.m` |
+| `outer_wilds_*` | Simulaciones artificiales | `outer_wilds_3d.m` |
+| `richardson_*` | Richardson extrapolation | `richardson_extrapolation.m` |
+| `barnes_hut_*` | Barnes-Hut + FFT | `barnes_hut_fft.m` |
+
+Cada función incluye un docstring con descripción, parámetros y ejemplo de uso.
 
 ## Archivos de terceros
 
-- **`densityScatter.m`**: Matthias Chung, Virginia Tech, 2016. Licencia BSD. Función para crear gráficos de densidad con scatter plots. Usada en `De_zero/Ploter.m`.
+- **`densityScatter.m`**: Matthias Chung, Virginia Tech, 2016. Licencia BSD. Función para crear gráficos de densidad con scatter plots.
 
 ## Constantes físicas utilizadas
 
