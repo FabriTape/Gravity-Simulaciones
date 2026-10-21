@@ -98,6 +98,3 @@ Cada función incluye un docstring con descripción, parámetros y ejemplo de us
 | G | 6.67430e-11 m³/kg/s² | Constante de gravitación universal |
 | Softening | +1 en r³ | Previene singularidades cuando r → 0 |
 
-## Autor
-
-Proyecto desarrollado como parte del curso de Física - Universidad Nacional de Cuyo (UNCuyo).
