@@ -20,7 +20,7 @@ El proyecto evolucionó desde simulaciones simples de 2 cuerpos hasta implementa
 | [v1.4](../../releases/tag/v1.4-verlet-final) | Verlet final (compacto) | Verlet position-only embebido | N genérico |
 | [v2.0](../../releases/tag/v2.0-desde-cero) | Desde cero (tensorial) | Verlet + N-D arrays | 2-500 |
 | [v2.1](../../releases/tag/v2.1-outer-wilds) | Outer Wilds | Verlet + filtrado estadístico | 20-600 |
-| [v2.2](../../releases/tag/v2.2-ia-optimizaciones) | Optimizaciones IA | Verlet + Barnes-Hut/FFT | 100-500 |
+| [v2.2](../../releases/tag/v2.2-ia-optimizaciones) | Optimizaciones IA | Verlet + Barnes-Hut/FFT | 500-900 |
 
 ## Estructura del proyecto
 
